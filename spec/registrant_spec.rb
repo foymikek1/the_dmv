@@ -16,5 +16,12 @@ RSpec.describe Registrant do
       expect(@registrant_2.permit).to eq false
     end
   end
+
+  describe "permit?" do
+    it 'can determine if a registrant has a permit or not' do
+      expect(@registrant_1.permit?).to eq true
+      expect(@registrant_2.permit?).to eq false
+    end
+  end
 end
 
