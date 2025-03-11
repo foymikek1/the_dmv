@@ -14,14 +14,17 @@ class Facility
   end
 
   def register_vehicle(vehicle)
-    @registered_vehicles << vehicle
-    vehicle.registration_date = Date.today
-    if vehicle.antique?
-      vehicle.plate_type = :antique
-    elsif vehicle.electric_vehicle?
-      vehicle.plate_type = :ev
-    else 
-      vehicle.plate_type = :regular
-    end
+    if @services.include?('Vehicle Registration')
+     @registered_vehicles << vehicle
+     vehicle.registration_date = Date.today
+     if vehicle.antique?
+       vehicle.plate_type = :antique
+     elsif vehicle.electric_vehicle?
+       vehicle.plate_type = :ev
+     else 
+       vehicle.plate_type = :regular
+     end
+    end      
+
   end
 end
