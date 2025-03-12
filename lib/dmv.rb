@@ -1,5 +1,5 @@
 class Dmv
-
+  attr_accessor :facilities
   def initialize
     @facilities = []
   end
@@ -9,8 +9,12 @@ class Dmv
   end
 
   def facilities_offering_service(service)
-    @facilities.find do |facility|
-      facility.services.include?(service)
+    found_facilities = []
+    @facilities.each do |facility|
+      if facility.services.include?(service)
+        found_facilities << facility
+      end
     end
+    found_facilities
   end
 end
