@@ -7,15 +7,21 @@ RSpec.describe Facility do
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
     @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
+    @dds = DmvDataService.new
   end
   describe '#initialize' do
     it 'can initialize' do
+      co_dmv_data = @dds.co_dmv_office_locations
       expect(@facility_1).to be_an_instance_of(Facility)
       expect(@facility_1.name).to eq('DMV Tremont Branch')
       expect(@facility_1.address).to eq('2855 Tremont Place Suite 118 Denver CO 80205')
       expect(@facility_1.phone).to eq('(720) 865-4600')
       expect(@facility_1.services).to eq([])
       expect(@facility_1.registered_vehicles).to eq([])
+    end
+
+    it 'can initialize with CO DMV data' do
+     co_dmv_data = @dds.co_dmv_office_locations
     end
   end
 
