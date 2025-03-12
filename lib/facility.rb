@@ -29,7 +29,20 @@ class Facility
        vehicle.plate_type = :regular
        @collected_fees += 100
      end
-    end      
-
+    end 
   end
+
+  def administer_written_test_condition(registrant)
+    registrant.permit? && registrant.age >= 16 && @services.include?("Written Test")
+  end
+
+  def administer_written_test(registrant)
+    if administer_written_test_condition(registrant)
+     registrant.liscence_data[:written] = true
+     true
+    else
+     false
+    end
+  end
+
 end

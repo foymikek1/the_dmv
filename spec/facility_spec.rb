@@ -67,6 +67,7 @@ RSpec.describe Facility do
       @facility_1.register_vehicle(@bolt)
       expect(@facility_1.registered_vehicles).to eq [@cruz, @camaro, @bolt]
       expect(@facility_1.collected_fees).to eq 325
+      
       expect(@facility_2.collected_fees).to eq 0
     end
   end
